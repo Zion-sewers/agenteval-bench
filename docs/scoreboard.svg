@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="agenteval-bench scoreboard: five eval suites rise to their pass rates against a 0.9 gate; the suite below the gate pulses and the gate shows EXIT 2">
+  <rect width="800" height="450" fill="#101210" rx="8"/>
+  <style>
+    text { font-family: "Space Grotesk", Inter, system-ui, sans-serif; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .bar { transform-box: fill-box; transform-origin: 50% 100%; animation: grow 6s ease-in-out infinite; }
+    .d0 { animation-delay: 0s; } .d1 { animation-delay: .15s; } .d2 { animation-delay: .3s; }
+    .d3 { animation-delay: .45s; } .d4 { animation-delay: .6s; }
+    .vlab { animation: vlab 6s ease-in-out infinite; opacity: 0; }
+    .fail { transform-box: fill-box; transform-origin: 50% 100%; animation: grow 6s ease-in-out infinite, pulse 6s linear infinite; animation-delay: .3s, .3s; }
+    .gate { animation: gate 6s ease-in-out infinite; opacity: 0; }
+    @keyframes grow {
+      0%        { transform: scaleY(0); }
+      17%, 76% { transform: scaleY(1); }
+      90%, 100%{ transform: scaleY(0); }
+    }
+    @keyframes vlab {
+      0%, 12%  { opacity: 0; }
+      17%, 76% { opacity: 1; }
+      82%, 100%{ opacity: 0; }
+    }
+    @keyframes pulse {
+      0%, 14%, 78%, 100% { opacity: 1; }
+      20%, 30%, 40%, 50%, 60%, 70% { opacity: .35; }
+      25%, 35%, 45%, 55%, 65%, 75% { opacity: 1; }
+    }
+    @keyframes gate {
+      0%, 22%   { opacity: 0; }
+      30%, 74%  { opacity: 1; }
+      82%, 100% { opacity: 0; }
+    }
+  </style>
+
+  <text x="40" y="44" fill="#D9A13B" font-size="20" font-weight="700">agenteval-bench</text>
+  <text x="40" y="68" fill="#F5F1E6" font-size="13" opacity=".85">suite scoreboard — every bar must clear the gate</text>
+
+  <!-- axes -->
+  <g stroke="#5C6B5A" stroke-width="1.5">
+    <line x1="90" y1="90" x2="90" y2="380"/>
+    <line x1="90" y1="380" x2="600" y2="380"/>
+  </g>
+  <g class="mono" fill="#5C6B5A" font-size="11" text-anchor="end">
+    <text x="82" y="384">0</text>
+    <text x="82" y="240">0.5</text>
+    <text x="82" y="94">1.0</text>
+  </g>
+  <!-- gate threshold at 0.9 -->
+  <line x1="90" y1="119" x2="600" y2="119" stroke="#D9A13B" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <text x="606" y="123" fill="#D9A13B" font-size="12" class="mono">gate 0.9</text>
+
+  <!-- bars: height = value * 290, base y = 380 -->
+  <g>
+    <rect class="bar d0" x="120" y="98.7"  width="64" height="281.3" rx="4" fill="#D9A13B"/>
+    <rect class="bar d1" x="222" y="107.4" width="64" height="272.6" rx="4" fill="#D9A13B"/>
+    <rect class="fail"   x="324" y="139.3" width="64" height="240.7" rx="4" fill="#B3402A"/>
+    <rect class="bar d3" x="426" y="116.1" width="64" height="263.9" rx="4" fill="#D9A13B"/>
+    <rect class="bar d4" x="528" y="101.6" width="64" height="278.4" rx="4" fill="#D9A13B"/>
+  </g>
+  <g class="mono" fill="#F5F1E6" font-size="12" text-anchor="middle">
+    <text class="vlab d0" x="152" y="88">0.97</text>
+    <text class="vlab d1" x="254" y="97">0.94</text>
+    <text class="vlab d2" x="356" y="129" fill="#B3402A">0.83</text>
+    <text class="vlab d3" x="458" y="106">0.91</text>
+    <text class="vlab d4" x="560" y="91">0.96</text>
+  </g>
+  <g fill="#F5F1E6" font-size="12" text-anchor="middle" opacity=".8">
+    <text x="152" y="402">planning</text>
+    <text x="254" y="402">tool-use</text>
+    <text x="356" y="402">long-horizon</text>
+    <text x="458" y="402">safety</text>
+    <text x="560" y="402">efficiency</text>
+  </g>
+
+  <!-- gate verdict -->
+  <g class="gate">
+    <rect x="636" y="150" width="124" height="96" rx="10" fill="#171917" stroke="#B3402A" stroke-width="2"/>
+    <text x="698" y="176" fill="#F5F1E6" font-size="12" text-anchor="middle" class="mono">merge gate</text>
+    <text x="698" y="216" fill="#B3402A" font-size="26" font-weight="700" text-anchor="middle" class="mono">EXIT 2</text>
+    <text x="698" y="236" fill="#5C6B5A" font-size="11" text-anchor="middle" class="mono">1 suite below gate</text>
+  </g>
+</svg>

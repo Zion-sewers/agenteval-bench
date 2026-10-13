@@ -23,6 +23,12 @@ agenteval-bench run --suite examples/support-agent.yaml --ci --threshold 0.9
 
 Exit 0: pass. Exit 2: the gate failed. Wire it into CI and agent regressions become red builds.
 
+## How it works
+
+![suite scoreboard](docs/scoreboard.svg)
+
+Each eval suite rises to its pass rate against the dashed gate line. One suite below the gate is enough: the bar pulses red and the merge gate exits 2. The animation loops the verdict so the failure mode is unmissable.
+
 ## What it does
 
 - Deterministic matchers: `exact`, `contains`, `regex`, `json_schema`. No model calls, no flakiness.
