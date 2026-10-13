@@ -12,6 +12,12 @@ You test code with pytest. You test agents with vibes. agenteval-bench closes th
 
 Its sharpest trick is `bugsmith`: point it at any small pytest repo and it builds you an executable SWE-benchmark. It injects seeded AST-mutation bugs, validates each one inside Docker against the repo's own test suite, and keeps only bugs that break at least one test — with `FAIL_TO_PASS` / `PASS_TO_PASS` lists. Benchmark correctness defined by the machine, never by hand-written task lists.
 
+## Watch it run
+
+![agenteval-bench CI gate demo](docs/demo.gif)
+
+*Live captures: a passing gate, then the same suite with one regressed recorded output — pass rate 75% vs threshold 90%, gate fails, exit code 2.*
+
 ## 60 seconds
 
 ```bash
